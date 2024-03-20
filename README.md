@@ -2,8 +2,10 @@
 # dev-env
 
 ### Personal development environment configuration:
-- **tmux** with config (tpm, theme, key bindings)
-- **Neovim** with config
+- **tmux** -- terminal session manager + config
+- **Neovim** -- text editor + config
+- **jq** -- CLI tool for processing JSON files
+- **direnv** -- tool for loading directory-based environments
 
 ---
 

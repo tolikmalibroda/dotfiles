@@ -2,7 +2,7 @@ NVIM_CONFIG_DIR = ${XDG_CONFIG_HOME:-$(HOME)/.config}/nvim
 TMUX_CONFIG_DIR = $(HOME)/.tmux
 TMUX_CONFIG_FILE = $(HOME)/.tmux.conf
 
-install-all: install-tmux install-nvim
+install-all: install-tmux install-nvim install-jq install-direnv
 
 install-tmux:
 	brew install tmux
@@ -17,4 +17,10 @@ rm-nvim-git-deps:
 	rm -rf $(NVIM_CONFIG_DIR)/.git
 	rm -rf $(NVIM_CONFIG_DIR)/.github
 	rm -rf $(NVIM_CONFIG_DIR)/.gitignore
+
+install-jq:
+	brew install jq
+
+install-direnv:
+	brew install direnv
 
