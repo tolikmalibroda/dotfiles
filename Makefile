@@ -1,16 +1,32 @@
 NVIM_CONFIG_DIR = ${XDG_CONFIG_HOME:-$(HOME)/.config}/nvim
 TMUX_CONFIG_DIR = $(HOME)/.tmux
 TMUX_CONFIG_FILE = $(HOME)/.tmux.conf
+BREW = "brew install"
+APT = "apt update && apt install"
 
 install-all: install-tmux install-nvim install-jq install-direnv
 
-install-tmux:
-	brew install tmux
+brew-install-tmux:
+	$(BREW) tmux
+	make config-tmux
+
+apt-install-tmux:
+	$(APT) tmux
+	make config-tmux
+
+config-tmux:
 	cp ./tmux/.tmux.conf $(TMUX_CONFIG_FILE)
 	git clone https://github.com/tmux-plugins/tpm $(TMUX_CONFIG_DIR)/plugins/tpm
 
-install-nvim:
-	brew install neovim
+brew-install-nvim:
+	$(BREW) neovim
+	make config-nvim
+
+apt-install-nvim:
+	$(APT) neovim
+	make config-nvim
+
+config-nvim:
 	git clone https://github.com/antl-m/kickstart.nvim.git $(NVIM_CONFIG_DIR)
 
 rm-nvim-git-deps:
@@ -18,9 +34,15 @@ rm-nvim-git-deps:
 	rm -rf $(NVIM_CONFIG_DIR)/.github
 	rm -rf $(NVIM_CONFIG_DIR)/.gitignore
 
-install-jq:
-	brew install jq
+brew-install-jq:
+	$(BREW) jq
 
-install-direnv:
-	brew install direnv
+apt-install-jq:
+	$(APT) jq
+
+brew-install-direnv:
+	$(BREW) direnv
+
+apt-install-direnv:
+	$(APT) direnv
 
