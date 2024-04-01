@@ -15,6 +15,7 @@ apt-install-tmux:
 	make config-tmux
 
 config-tmux:
+	rm -f $(TMUX_CONFIG_FILE)
 	cp ./tmux/.tmux.conf $(TMUX_CONFIG_FILE)
 	git clone https://github.com/tmux-plugins/tpm $(TMUX_CONFIG_DIR)/plugins/tpm
 
