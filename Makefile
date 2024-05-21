@@ -1,4 +1,4 @@
-NVIM_CONFIG_DIR = ${XDG_CONFIG_HOME:-$(HOME)/.config}/nvim
+NVIM_CONFIG_DIR = $(HOME)/.config/nvim
 TMUX_CONFIG_DIR = $(HOME)/.tmux
 TMUX_CONFIG_FILE = $(HOME)/.tmux.conf
 BREW = "brew install"
