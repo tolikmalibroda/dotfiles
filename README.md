@@ -1,5 +1,5 @@
 
-# dev-env
+# Dotfiles
 
 ### Personal development environment configuration:
 - **tmux** -- terminal session manager + config
@@ -21,8 +21,8 @@ eval $(curl https://raw.githubusercontent.com/antl-m/dev-env/main/install.sh)
 
 Or clone repository to be able to push configs updates:
 ```bash
-git clone https://github.com/antl-m/dev-env.git
-cd ./dev-env
+git clone https://github.com/tolikmalibroda/dotfiles.git
+cd ./dotfiles
 make install-all
 ```
 
