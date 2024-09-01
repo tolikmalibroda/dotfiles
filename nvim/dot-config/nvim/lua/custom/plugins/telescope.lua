@@ -63,11 +63,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
           },
         },
       },
-      pickers = {
-        find_files = {
-          hidden = true,
-        },
-      },
+      -- pickers = {
+      --   find_files = {
+      --     hidden = true,
+      --   },
+      -- },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
@@ -114,5 +114,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
+
+    -- Find in all files including hidden files
+    vim.keymap.set('n', '<leader>sa', function()
+      builtin.find_files {
+        hidden = true,
+        prompt_title = 'Search All Files',
+      }
+    end, { desc = '[S]earch [A]ll Files' })
   end,
 }
