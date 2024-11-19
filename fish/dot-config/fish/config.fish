@@ -3,5 +3,7 @@ if status is-interactive
   eval "$(/opt/homebrew/bin/brew shellenv)"
   starship init fish | source
   nvm use default --silent
+  pyenv init - | source
+  pyenv virtualenv-init - | source
 end
 
