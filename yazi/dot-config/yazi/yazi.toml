@@ -1,0 +1,4 @@
+[open]
+rules = [
+	{ mime = "image/*", use = [ "edit", "open", "reveal" ] },
+]
