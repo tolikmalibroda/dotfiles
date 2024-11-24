@@ -1,4 +1,7 @@
 [open]
-rules = [
+prepend_rules = [
 	{ mime = "image/*", use = [ "edit", "open", "reveal" ] },
 ]
+
+[manager]
+show_hidden = true
