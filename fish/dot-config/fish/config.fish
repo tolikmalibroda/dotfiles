@@ -5,5 +5,6 @@ if status is-interactive
   nvm use default --silent
   pyenv init - | source
   pyenv virtualenv-init - | source
+  set -gx EDITOR nvim
 end
 
