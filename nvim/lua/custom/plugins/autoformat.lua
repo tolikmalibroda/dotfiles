@@ -24,7 +24,10 @@ return { -- Autoformat
         'prettier',
         stop_after_first = true,
       },
-      go = { 'goimports' },
+      go = {
+        'goimports',
+        'gofmt',
+      },
     },
   },
 }

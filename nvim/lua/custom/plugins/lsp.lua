@@ -195,5 +195,13 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
+
+    local local_tools = {
+      gopls = {},
+    }
+
+    for tool_name, tool_config in pairs(local_tools) do
+      require('lspconfig')[tool_name].setup(tool_config)
+    end
   end,
 }
