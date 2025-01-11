@@ -195,12 +195,24 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
-
     local local_tools = {
       gopls = {},
+      nil_ls = {
+        settings = {
+          ['nil'] = {
+            nix = {
+              flake = {
+                autoArchive = true,
+                autoEvalInputs = true,
+              },
+            },
+          },
+        },
+      },
     }
 
     for tool_name, tool_config in pairs(local_tools) do
+      tool_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, tool_config.capabilities or {})
       require('lspconfig')[tool_name].setup(tool_config)
     end
   end,
