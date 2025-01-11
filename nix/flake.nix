@@ -28,6 +28,7 @@
             nixfmt-rfc-style
             colima
             docker
+            tmux
           ];
 
           # Necessary for using flakes on this system.
@@ -62,33 +63,13 @@
             home = "/Users/tolikmalibroda";
           };
 
-          # home-manager.useGlobalPkgs = true;
-          # home-manager.useUserPackages = true;
-          # home-manager.users.tolikmalibroda = { pkgs, ... }: {
-          #   home.packages = [ pkgs.direnv ];
-          #
-          #   programs = {
-          #     direnv = {
-          #       enable = true;
-          #       enableFishIntegration = true;
-          #       nix-direnv.enable = true;
-          #     };
-          #     fish.enable = true;
-          #   };
-          #
-          #   # The state version is required and should stay at the version you
-          #   # originally installed.
-          #   home.stateVersion = "24.11";
-          # };
         };
     in
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#Toliks-MacBook-Air
       darwinConfigurations."Toliks-MacBook-Air" = nix-darwin.lib.darwinSystem {
-        # specialArgs = inputs;
         modules = [
-          # home-manager.darwinModules.home-manager
           configuration
         ];
       };
