@@ -22,10 +22,10 @@ return {
       priority = 1001,
       config = true,
       opts = {},
-      -- init = function()
-      --   vim.o.background = 'dark' -- or "light" for light mode
-      --   vim.cmd.colorscheme 'gruvbox'
-      -- end,
+      init = function()
+        vim.o.background = 'dark' -- or "light" for light mode
+        vim.cmd.colorscheme 'gruvbox'
+      end,
     },
   },
 }
