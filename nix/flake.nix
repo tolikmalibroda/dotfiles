@@ -29,6 +29,7 @@
             colima
             docker
             tmux
+            terraform-ls
           ];
 
           # Necessary for using flakes on this system.

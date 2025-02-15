@@ -209,6 +209,7 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
+      terraformls = {},
     }
 
     for tool_name, tool_config in pairs(local_tools) do

@@ -15,6 +15,13 @@ return { -- Autoformat
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
       }
     end,
+    -- log_level = vim.log.levels.DEBUG,
+    formatters = {
+      custom_tf_fmt = {
+        command = 'tf',
+        args = { 'fmt', '-list=false', '-no-color', '$FILENAME' },
+      },
+    },
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
@@ -27,12 +34,21 @@ return { -- Autoformat
         'prettier',
         stop_after_first = true,
       },
+      typescript = {
+        'prettierd',
+        'prettier',
+        stop_after_first = true,
+      },
       go = {
         'goimports',
         'gofmt',
       },
       nix = {
         'nixfmt',
+      },
+      terraform = {
+        -- 'terraform_fmt',
+        'custom_tf_fmt',
       },
     },
   },
