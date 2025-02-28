@@ -25,9 +25,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-
-    -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    { 'nvim-telescope/telescope-symbols.nvim' },
   },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -78,6 +77,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'symbols')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -122,5 +122,9 @@ return { -- Fuzzy Finder (files, lsp, etc)
         prompt_title = 'Search All Files',
       }
     end, { desc = '[S]earch [A]ll Files' })
+
+    vim.keymap.set('n', '<leader>se', function()
+      builtin.symbols { sources = { 'emoji' } }
+    end, { desc = '[S]earch [E]mojis' })
   end,
 }

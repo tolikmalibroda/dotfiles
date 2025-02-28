@@ -21,6 +21,10 @@ return { -- Autoformat
         command = 'tf',
         args = { 'fmt', '-list=false', '-no-color', '$FILENAME' },
       },
+      custom_md_fmt = {
+        command = 'prettierd',
+        args = { '--prose-wrap=always', '$FILENAME' },
+      },
     },
     formatters_by_ft = {
       lua = { 'stylua' },
@@ -49,6 +53,11 @@ return { -- Autoformat
       terraform = {
         -- 'terraform_fmt',
         'custom_tf_fmt',
+      },
+      markdown = {
+        'custom_md_fmt',
+        -- 'prettierd',
+        -- stop_after_first = true,
       },
     },
   },
