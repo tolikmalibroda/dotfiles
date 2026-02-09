@@ -26,10 +26,21 @@
             nixd
             nil
             nixfmt-rfc-style
+            nix-inspect
             colima
             docker
+            podman
             tmux
             terraform-ls
+            ollama
+            taskwarrior3
+            tlrc
+            prettierd
+            lazygit
+            lazydocker
+            atuin
+            yt-dlp
+            ffmpeg
           ];
 
           # Necessary for using flakes on this system.
