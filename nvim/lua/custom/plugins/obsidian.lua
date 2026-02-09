@@ -39,6 +39,9 @@ return {
       'echasnovski/mini.nvim',
       'nvim-tree/nvim-web-devicons',
     },
-    opts = {},
+    opts = {
+      file_types = { 'markdown', 'Avante' },
+    },
+    ft = { 'markdown', 'Avante' },
   },
 }

@@ -13,6 +13,7 @@ return { -- LSP Configuration & Plugins
     -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     { 'folke/neodev.nvim', opts = {} },
+    { 'qvalentin/helm-ls.nvim', ft = 'helm' },
     'folke/neoconf.nvim',
   },
   config = function()
@@ -137,7 +138,7 @@ return { -- LSP Configuration & Plugins
     local servers = {
       -- clangd = {},
       -- gopls = {},
-      pyright = {},
+      -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
@@ -147,6 +148,7 @@ return { -- LSP Configuration & Plugins
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
       -- jsonnet_ls = {},
+      helm_ls = {},
 
       lua_ls = {
         -- cmd = {...},
@@ -210,6 +212,7 @@ return { -- LSP Configuration & Plugins
         },
       },
       terraformls = {},
+      pyright = {},
     }
 
     for tool_name, tool_config in pairs(local_tools) do

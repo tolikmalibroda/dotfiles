@@ -17,10 +17,6 @@ return { -- Autoformat
     end,
     -- log_level = vim.log.levels.DEBUG,
     formatters = {
-      custom_tf_fmt = {
-        command = 'tf',
-        args = { 'fmt', '-list=false', '-no-color', '$FILENAME' },
-      },
       custom_md_fmt = {
         command = 'prettierd',
         args = { '--prose-wrap=always', '$FILENAME' },
@@ -29,7 +25,7 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
+      python = { 'isort', 'black' },
       --
       -- You can use a sub-list to tell conform to run *until* a formatter
       -- is found.
@@ -43,6 +39,12 @@ return { -- Autoformat
         'prettier',
         stop_after_first = true,
       },
+      javascriptreact = {
+        'prettierd',
+      },
+      typescriptreact = {
+        'prettierd',
+      },
       go = {
         'goimports',
         'gofmt',
@@ -51,8 +53,7 @@ return { -- Autoformat
         'nixfmt',
       },
       terraform = {
-        -- 'terraform_fmt',
-        'custom_tf_fmt',
+        'terraform_fmt',
       },
       markdown = {
         'custom_md_fmt',
