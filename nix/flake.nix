@@ -41,6 +41,9 @@
             atuin
             yt-dlp
             ffmpeg
+            pyright
+            isort
+            black
           ];
 
           # Necessary for using flakes on this system.
