@@ -44,6 +44,8 @@
             pyright
             isort
             black
+            zoxide
+            jujutsu
           ];
 
           # Necessary for using flakes on this system.
@@ -66,7 +68,7 @@
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
-          security.pam.enableSudoTouchIdAuth = true;
+          security.pam.services.sudo_local.touchIdAuth = true;
           environment.etc."pam.d/sudo_local".text = ''
             # Managed by nix-darwin
             auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
