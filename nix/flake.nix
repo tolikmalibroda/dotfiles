@@ -28,6 +28,7 @@
             nixfmt-rfc-style
             nix-inspect
             colima
+            lima
             docker
             podman
             tmux
