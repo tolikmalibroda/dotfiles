@@ -55,6 +55,9 @@ return { -- Autoformat
       terraform = {
         'terraform_fmt',
       },
+      json = {
+        'jq',
+      },
       markdown = {
         'custom_md_fmt',
         -- 'prettierd',
