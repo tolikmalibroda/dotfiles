@@ -1,4 +1,4 @@
-# Minimal Lima configuration for the SuperAgent project
+# Minimal Lima configuration for the development VM
 # This uses Apple's native Virtualization framework (vz) and Rosetta 2 for maximum performance.
 
 # Base OS: Ubuntu 24.04 (Noble)
@@ -10,9 +10,9 @@ images:
 vmType: "vz"
 
 # 2. Enable Rosetta 2 to seamlessly run x86_64 containers/binaries if needed
-# rosetta:
-#   enabled: true
-#   binfmt: true
+rosetta:
+  enabled: true
+  binfmt: true
 
 # 3. Mount the macOS home directory (where this project lives) so it syncs perfectly
 mounts:
@@ -20,20 +20,20 @@ mounts:
     writable: true
 
 # 4. Provisioning Scripts (Runs automatically on first boot)
-provision:
-  - mode: system
-    # We install Nix using the modern Determinate Systems installer, 
-    # so the VM is immediately ready to run `nix develop` and `bazel`.
-    script: |
-      #!/bin/sh
-      if [ ! -d "/nix" ]; then
-        echo "Installing Nix..."
-        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux \
-          --init none \
-          --no-confirm
-      else
-        echo "Nix is already installed."
-      fi
+# provision:
+#   - mode: system
+#     # We install Nix using the modern Determinate Systems installer, 
+#     # so the VM is immediately ready to run `nix develop` and `bazel`.
+#     script: |
+#       #!/bin/sh
+#       if [ ! -d "/nix" ]; then
+#         echo "Installing Nix..."
+#         curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux \
+#           --init none \
+#           --no-confirm
+#       else
+#         echo "Nix is already installed."
+#       fi
 
 # 5. Automatically forward any ports opened in the VM to the macOS host.
 # (e.g. if the Python orchestrator listens on 8080, it will be available at localhost:8080 on your Mac)
