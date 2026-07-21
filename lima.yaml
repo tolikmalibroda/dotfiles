@@ -1,0 +1,47 @@
+# Minimal Lima configuration for the SuperAgent project
+# This uses Apple's native Virtualization framework (vz) and Rosetta 2 for maximum performance.
+
+# Base OS: Ubuntu 24.04 (Noble)
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+
+# 1. Use the Apple Virtualization Framework instead of QEMU
+vmType: "vz"
+
+# 2. Enable Rosetta 2 to seamlessly run x86_64 containers/binaries if needed
+# rosetta:
+#   enabled: true
+#   binfmt: true
+
+# 3. Mount the macOS home directory (where this project lives) so it syncs perfectly
+mounts:
+  - location: "~"
+    writable: true
+
+# 4. Provisioning Scripts (Runs automatically on first boot)
+provision:
+  - mode: system
+    # We install Nix using the modern Determinate Systems installer, 
+    # so the VM is immediately ready to run `nix develop` and `bazel`.
+    script: |
+      #!/bin/sh
+      if [ ! -d "/nix" ]; then
+        echo "Installing Nix..."
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux \
+          --init none \
+          --no-confirm
+      else
+        echo "Nix is already installed."
+      fi
+
+# 5. Automatically forward any ports opened in the VM to the macOS host.
+# (e.g. if the Python orchestrator listens on 8080, it will be available at localhost:8080 on your Mac)
+portForwards:
+  - guestSocket: "/run/user/{{.UID}}/docker.sock"
+    hostSocket: "{{.Dir}}/sock/docker.sock"
+  - guestIPMustBeZero: true
+    guestIP: "0.0.0.0"
+    guestPortRange: [1, 65535]
+    hostIP: "0.0.0.0"
+    hostPortRange: [1, 65535]
